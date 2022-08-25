@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def beerIndex(request):
+    return render(request, "sites/index.html", {})
