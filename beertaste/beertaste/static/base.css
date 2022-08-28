@@ -1,0 +1,14 @@
+body{
+    position: relative;
+    min-height: 100vh;
+    background-color: black;
+}
+h1 {
+	color:salmon;
+	text-align: center;
+}
+.bg {
+	background-color: grey;
+	width: 80%;
+	max-height: 20%;
+}
