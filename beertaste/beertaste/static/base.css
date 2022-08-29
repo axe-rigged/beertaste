@@ -1,7 +1,7 @@
 body{
-    position: relative;
     min-height: 100vh;
     background-color: black;
+	position: relative;
 }
 h1 {
 	color:salmon;
@@ -11,4 +11,12 @@ h1 {
 	background-color: grey;
 	width: 80%;
 	max-height: 20%;
+	margin: auto;
+}
+.foot{
+	bottom: 0px;
+	background-color: grey;
+	width: 80%;
+	height: 42px;
+	margin: auto;
 }
