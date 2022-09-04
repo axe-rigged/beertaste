@@ -27,6 +27,6 @@ def uploadBeer(request):
             #We later need to check start and maybe something else
             review.save()
             return redirect("sites:beerIndex")
-        else:
-            form = UploadReviewa()
+    else:
+        form = UploadReview()
     return render(request, "sites/upload.html", {"form":form})

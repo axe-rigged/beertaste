@@ -3,7 +3,8 @@
 <div>
 	<form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	{{ from.as_p }}
+	{{ form.as_p }}
+	<button type="submit">Review</button>
 	</form>
 	<br/>
 	<a href="{% url 'sites:beerIndex' %}">Back to Beer</a>
