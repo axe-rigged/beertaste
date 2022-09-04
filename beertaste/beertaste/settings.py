@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'beertaste.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+# Maybe create databases to /var/www/beer/media and /static for nginx
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -122,7 +122,7 @@ STATICFILES_DIRS = [
         ]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-#Tarkista tarvitseeko olla os.path.join vai uudella 4.0 tavalla
+#Tarkista tarvitseeko olla os.path.join vai uudella 4.0 tavalla(taita jokin 3.0)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

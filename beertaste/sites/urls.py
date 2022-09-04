@@ -3,5 +3,6 @@ from . views import beerIndex
 
 app_name = "sites"
 urlpatterns = [
-        path("", beerIndex, name="beerIndex")
+        path("", beerIndex, name="beerIndex"),
+        path("/upload", uploadBeer, name="upload")
 ]

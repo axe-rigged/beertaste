@@ -2,5 +2,16 @@
 {% block content %}
 <div>
 	<h1>HELLO WORLD</h1>
+	{% for beer in beer %}
+		<div>
+			<h3>
+				{{ beer.beer_name }}
+			</h3>
+			<p>{{ beer.starts }}</p>
+			<img src="{{ beer.image.thumbnail }}" alt="{{ beer.description }}" />
+		</div>
+	{% endfor %}
+	<br/>
+	<a href="{% url 'sites:upload' %}">Upload</a>
 </div>
 {% endblock content %}
