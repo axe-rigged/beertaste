@@ -24,6 +24,7 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     ]
 # Don't need really statics, but if we want to test robost ways it's good.
+# Reload only needed in development... should make at some point if settings.DEBUG: dev.urlpatterns else: relase
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
