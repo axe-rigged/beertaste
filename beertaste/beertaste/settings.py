@@ -31,6 +31,9 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'tailwind',
+    'theme',
+    'django_browser_reload',
     'sites.apps.SitesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,7 +74,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'beertaste.wsgi.application'
 
-
+TAILWIND_APP_NAME = "theme"
+#Develpoment server
+INTERNAL_IPS = ["127.0.0.1",]
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Maybe create databases to /var/www/beer/media and /static for nginx

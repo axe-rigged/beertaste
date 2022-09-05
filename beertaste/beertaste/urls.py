@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("sites.urls")),
+    path("__reload__/", include("django_browser_reload.urls")),
     ]
 # Don't need really statics, but if we want to test robost ways it's good.
 if settings.DEBUG:
