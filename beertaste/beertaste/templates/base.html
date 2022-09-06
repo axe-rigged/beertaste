@@ -8,17 +8,32 @@
 	<link rel="icon" href="{% static 'favicon.svg' %}" type="image/x-icon"/>
     <title>BeerTaste</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
-	<link href="{% static 'base.css' %}" rel="stylesheet" type="text/css"/>
 	{% tailwind_css %}
 
 </head>	
 <body>
-	<div class="bg">
-		<h1>Beer Taste Reviews</h1>	
-	</div>
-	{% block content %}
-	{% endblock content %}
-	<div class="foot">
-		<h1>Block for info of website maker</h1>	
+	<div class="bg-black min-h-screen">
+		<div class="bg-amber-800 text-center w-4/5 mx-auto">
+			<h1 class="text-xl">Beer Taste Reviews</h1>	
+		</div>
+		{% block content %}
+		{% endblock content %}
+		<div class="bg-amber-800 w-4/5 mx-auto h-20 rounded-md grid grid-cols-3 gap-4 items-place-center">
+			<div class="m-auto text-white">
+				<h1 class="text-center">Github</h1>	
+				<a href="#">
+					<img class="mx-auto" src="{% static 'github.svg' %}" alt="Github" width="32px" height="32px"/>
+				</a>
+			</div>
+			<div class="m-auto">
+				<h1 class="text-white text-center m-auto">Work email here and logo</h1>	
+			</div>
+			<div class="m-auto text-white">
+				<h1 class="text-center">Twitter bird here</h1>	
+				<a href="#">
+					<img class="mx-auto" src="{% static 'twitter.svg' %}" alt="Github" width="32px" height="32px"/>
+				</a>
+			</div>
+		</div>
 	</div>
 </body>
