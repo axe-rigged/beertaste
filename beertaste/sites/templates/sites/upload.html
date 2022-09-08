@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
+<div class="w-4/5 mx-auto grid grid-cols-1 items-place-center">
 	<form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Review</button>
+	<div class="text-white bg-gray-700 p-4 my-3 rounded-md mx-auto w-3/5 grid grid-cols-1 items-place-center">
+		{{ form.as_div }}	
+		<button class="w-32 mx-auto my-2 bg-orange-600 rounded-full text-center hover:bg-green-300 text-white" type="submit">Review</button>
+	</div>
 	</form>
-	<br/>
-	<a href="{% url 'sites:beerIndex' %}">Back to Beer</a>
+	<a class="text-white mx-auto" href="{% url 'sites:beerIndex' %}">
+		<button class="w-32 my-2 bg-orange-600 hover:bg-red-600 rounded-full text-center">Back to beer</button>
+	</a>
 </div>
 {% endblock content %}
