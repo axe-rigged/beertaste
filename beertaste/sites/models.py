@@ -10,6 +10,10 @@ class country(models.Model):
 class tags(models.Model):
     adjective = models.CharField(max_length=100)
 
+#Type of beer (add later)
+class mold(models.Model):
+    typeOfBeer = models.CharField(max_length=100)
+
 # Create your models here.
 class beerReview(models.Model):
     beer_name = models.CharField(max_length=200)
