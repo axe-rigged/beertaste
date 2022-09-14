@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import beerReview
 from .forms import UploadReview
 
 def beerIndex(request):
-    # Add later POST in dialog/popup way
+    # Add later POST in dialog/popup way. Read from documetns if you can send beer and form as dictionary.
     #if request.method == "POST":
     #    #Validate that post is legit and then return index With get.
     #   form = UploadReview(request.POST, request.FILES)
@@ -30,3 +30,10 @@ def uploadBeer(request):
     else:
         form = UploadReview()
     return render(request, "sites/upload.html", {"form":form})
+
+#url "<pk:int/>". Check if request has pk in it or does it need to be told
+#(modelsName, pk/slug/etc = url pk/slug/etc)
+def beerInfo(request, pk):
+    if request.method == "GET":
+        theBeer = get_object_or_404(beerReview, pk=pk)
+        return render(request, "sites/beer.html", {"theBeer": theBeer})

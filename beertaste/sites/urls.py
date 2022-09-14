@@ -4,5 +4,6 @@ from . views import *
 app_name = "sites"
 urlpatterns = [
         path("", beerIndex, name = "beerIndex"),
-        path("upload", uploadBeer, name = "uploadBeer")
+        path("upload", uploadBeer, name = "uploadBeer"),
+        path("<pk>/beer", beerInfo, name = "beerInfo")
 ]
