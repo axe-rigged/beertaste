@@ -23,5 +23,6 @@ class beerReview(models.Model):
     drank_date = models.DateTimeField('data published', auto_now_add=True)
     description = models.CharField(max_length=300)
     adjectives = models.ManyToManyField(tags)
+    beer_type = models.ForeignKey(mold, on_delete=models.CASCADE, default="Unknown")
     countryMade = models.ForeignKey(country, on_delete=models.CASCADE, null=True)
 
