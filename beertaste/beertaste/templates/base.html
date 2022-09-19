@@ -15,9 +15,11 @@
 	<div class="bg-trus min-h-screen">
 		<div class="bg-kel text-center w-4/5 mx-auto h-16 rounded-b-lg grid grid-cols-3 justify-items-center">
 			<div class="my-auto justify-self-end">
-			<img class="mr-2" src="{% static 'beer.svg' %}" alt="beer" width="42px" height="42px"/>
+				<img class="mr-2" src="{% static 'beer.svg' %}" alt="beer" width="42px" height="42px"/>
 			</div>
-			<h1 class="text-xl m-auto"> Beer Taste Reviews </h1>	
+			<a href="{% url 'sites:beerIndex' %}" alt="BeerTaste frontpage" class="h-fit my-auto hover:text-orange-600">
+				<h1 class="text-xl underline"> Beer Taste Reviews </h1>
+			</a>
 		</div>
 		{% block content %}
 		{% endblock content %}
