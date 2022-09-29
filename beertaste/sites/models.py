@@ -15,6 +15,7 @@ class mold(models.Model):
     typeOfBeer = models.CharField(max_length=100)
 
 # Create your models here.
+# Maybe change "stars" integer to choice. So we can press 1-10 radio buttons for choice. Maybe in forms easier
 class beerReview(models.Model):
     beer_name = models.CharField(max_length=200)
     stars = models.IntegerField()

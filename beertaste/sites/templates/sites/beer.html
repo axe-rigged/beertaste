@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 	<div class="text-center text-white my-4 w-4/5 mx-auto">
-		<h2>Here will be beer specific knowledge. Make sure thinks will be in grid with out margin.</h2>
+		<h2>Here will be beer specific knowledge. Might be button for next drink.</h2>
 		<div class="grid grid-cols-3 gap-2 my-4">
 			<div>
-				<img src="{{ theBeer.image.thumbnail.url }}" alt="{{ theBeer.beer_name }}" width="400px" height="400px"/>
+				<img class="rounded-md" src="{{ theBeer.image.thumbnail.url }}" alt="{{ theBeer.beer_name }}" width="400px" height="400px"/>
 			</div>
 			<div class="col-span-2 text-xl">
-				<h1 class="my-4">{{ theBeer.beer_name }}</h1>
-				<p>{{ theBeer.stars }}</p>
+				<h1 class="my-2 underline">{{ theBeer.beer_name }}</h1>
+				<p> Rate: {{ theBeer.stars }} / 10</p>
 				<p>{{ theBeer.description }}</p>
-				<p>Think will be in grid. Items center or start. </p>
+				<br/>
+				<p>Here will be all other data in grid or overplaces</p>
 			</div>
 		</div>
 	</div>
