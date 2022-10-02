@@ -25,6 +25,7 @@ with(open("/etc/secretkey.txt") as x):
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Host can be domain name or IP
 ALLOWED_HOSTS = ['127.0.0.1']
 
 
@@ -77,9 +78,11 @@ WSGI_APPLICATION = 'beertaste.wsgi.application'
 TAILWIND_APP_NAME = "theme"
 #Develpoment server
 INTERNAL_IPS = ["127.0.0.1",]
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Maybe create databases to /var/www/beer/media and /static for nginx
+# Make mariadb that can be used later with container or have ready to go option.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

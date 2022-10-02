@@ -15,10 +15,25 @@ class mold(models.Model):
     typeOfBeer = models.CharField(max_length=100)
 
 # Create your models here.
-# Maybe change "stars" integer to choice. So we can press 1-10 radio buttons for choice. Maybe in forms easier
+# Add default values for image and stars.
+# Wrong field for forgeinkey
 class beerReview(models.Model):
+
+    starsChoice = (
+        (1,"1"),
+        (2,"2"),
+        (3,"3"),
+        (4,"4"),
+        (5,"5"),
+        (6,"6"),
+        (7,"7"),
+        (8,"8"),
+        (9,"9"),
+        (10,"10"),
+        )
+
     beer_name = models.CharField(max_length=200)
-    stars = models.IntegerField()
+    stars = models.IntegerField(choices=starsChoice)
     image = JPEGField(upload_to='images/', blank=False, variations={
     'thumbnail':(400, 400, True)}, delete_orphans=True, validators=[MinSizeValidator(400,400)])
     drank_date = models.DateTimeField('data published', auto_now_add=True)

@@ -23,6 +23,8 @@ def uploadBeer(request):
         form = UploadReview()
     return render(request, "sites/upload.html", {"form":form})
 
+# This is test that can I make form and use it without using form.model.
+# TEST
 def testUploadBeer(request):
     if request.method == "POST":
         form = radioReview(request.POST, request.FILES)
@@ -31,6 +33,7 @@ def testUploadBeer(request):
     else:
         form = radioReview()
     return render(request, "sites/upT.html", {"form":form})
+# TEST
 
 #url "<pk:int/>". Check if request has pk in it or does it need to be told
 #(modelsName, pk/slug/etc = url pk/slug/etc)
