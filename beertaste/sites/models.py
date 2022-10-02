@@ -6,13 +6,22 @@ from stdimage.validators import MinSizeValidator
 class country(models.Model):
     country_name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.country_name
+
 #Tags to be used for beer
 class tags(models.Model):
     adjective = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.adjective
+
 #Type of beer (add later)
 class mold(models.Model):
     typeOfBeer = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.typeOfBeer
 
 # Create your models here.
 # Add default values for image and stars.
@@ -41,4 +50,6 @@ class beerReview(models.Model):
     adjectives = models.ManyToManyField(tags)
     beer_type = models.ForeignKey(mold, on_delete=models.CASCADE, null=True)
     countryMade = models.ForeignKey(country, on_delete=models.CASCADE, null=True)
-
+    
+    def __str__(self):
+        return self.beer_name
