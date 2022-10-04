@@ -25,7 +25,7 @@ class mold(models.Model):
 
 # Create your models here.
 # Add default values for image and stars.
-# Wrong field for forgeinkey
+# Need to make one good migrate
 class beerReview(models.Model):
 
     starsChoice = (

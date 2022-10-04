@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import beerReview
 from .forms import UploadReview, radioReview
 
+# model.object needs to use .all() or .get(id/pk). And on template we need to use object.all
 def beerIndex(request):
     if request.method == "GET":
         beer = beerReview.objects.all()
         return render(request, "sites/index.html", {"beer" : beer})
 
+# Image files need to have .image_file like *.jpeg or *.png
 def uploadBeer(request):
     if request.method == "POST":
         form = UploadReview(request.POST, request.FILES)

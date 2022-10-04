@@ -16,9 +16,13 @@
 		<div class="col-span-2 text-xl">
 			<h1 class="my-2 underline">{{ theBeer.beer_name }}</h1>
 			<p> Rate: {{ theBeer.stars }} / 10</p>
-			<p>{{ theBeer.description }}</p>
+			<p> Country made: {{ theBeer.countryMade }}</p>
+			<!-- Need div where these adjectives are looking nice -->
+			{% for adj in theBeer.adjectives.all %}
+			<p>{{ adj }}</p>
+			{% endfor %}
 			<br/>
-			<p>Here will be all other data in grid or overplaces</p>
+			<p>{{ theBeer.description }}</p>
 		</div>
 	</div>
 </div>
