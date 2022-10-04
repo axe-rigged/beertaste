@@ -12,11 +12,6 @@ def uploadBeer(request):
         form = UploadReview(request.POST, request.FILES)
         if form.is_valid:
             review = form.save(commit=False)
-            #We later need to check start and maybe something else
-            if review.stars > 10:
-                review.stars = 10
-            if review.stars < 1:
-                review.stars = 1
             review.save()
             return redirect("sites:beerIndex")
     else:

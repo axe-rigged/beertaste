@@ -7,7 +7,7 @@ class UploadReview(forms.ModelForm):
     #class Meta lets us use model for form
     class Meta:
         model = beerReview
-        fields = ["beer_name", "stars", "image", "description", "adjectives", "beer_type","countryMade"]
+        fields = ["beer_name", "stars", "image", "description", "adjectives", "beer_type", "countryMade"]
 
 # Test This later. Might need to some how import adjectives, beer_type and country.
 # This ain't ModelForm, because we aint using model here

@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div class="grid gap-2 grid-cols-3 place-items-center w-4/5 mx-auto my-2">
-	<div class="w-max h-max text-kel text-xl"><---</div>
+	<div class="w-max h-max text-kel text-xl"><a class="hover:text-orange-600" href="#"><---</a></div>
 	<h1 class="text-xl text-kel text-center">{{ theBeer.beer_name }}</h1>
-	<div class="w-max h-max text-kel text-xl">---></div>
+	<div class="w-max h-max text-kel text-xl"><a class="hover:text-orange-600" href="#">---></a></div>
 </div>
+
 <div class="text-center text-white my-4 w-4/5 mx-auto">
 	<h2>Here will be beer specific knowledge. Might be button for next drink.</h2>
 	<div class="grid grid-cols-3 gap-2 my-4">
