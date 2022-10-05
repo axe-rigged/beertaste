@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- TODO: check if "if" would work here when making navigaton for next drink. We need two variables for previous and next beer -->
 <div class="grid gap-2 grid-cols-3 place-items-center w-4/5 mx-auto my-2">
-	<div class="w-max h-max text-kel text-xl"><a class="hover:text-orange-600" href="#"><---</a></div>
+	<div class="w-max h-max text-kel text-xl"><a class="hover:text-orange-600" href="{% url 'sites:beerInfo' pk=prevBeer %}"><---</a></div>
 	<h1 class="text-xl text-kel text-center">{{ theBeer.beer_name }}</h1>
-	<div class="w-max h-max text-kel text-xl"><a class="hover:text-orange-600" href="#">---></a></div>
+	<div class="w-max h-max text-kel text-xl"><a class="hover:text-orange-600" href="{% url 'sites:beerInfo' pk=nextBeer %}">---></a></div>
 </div>
 
 <div class="text-center text-white my-4 w-4/5 mx-auto">
@@ -18,10 +19,11 @@
 			<p> Rate: {{ theBeer.stars }} / 10</p>
 			<p> Country made: {{ theBeer.countryMade }}</p>
 			<!-- Need div where these adjectives are looking nice -->
-			{% for adj in theBeer.adjectives.all %}
-			<p>{{ adj }}</p>
-			{% endfor %}
-			<br/>
+			<div class="gap-2 grid grid-cols-6 place-items-center my-4">
+				{% for adj in theBeer.adjectives.all %}
+					<div class="w-max h-max px-2 bg-orange-600 rounded-full">{{ adj }}</div>
+				{% endfor %}
+			</div>
 			<p>{{ theBeer.description }}</p>
 		</div>
 	</div>

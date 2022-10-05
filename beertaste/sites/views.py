@@ -32,9 +32,16 @@ def testUploadBeer(request):
     return render(request, "sites/upT.html", {"form":form})
 # TEST
 
-#url "<pk:int/>". Check if request has pk in it or does it need to be told
-#(modelsName, pk/slug/etc = url pk/slug/etc)
+# url "<pk:int/>". Check if request has pk in it or does it need to be told
+# (modelsName, pk/slug/etc = url pk/slug/etc)
+# We might need to use somekind cahce to get how many reviews there is. Then we can easily check if we have last or first.
+# Need cache to go around 0 and know when last beer is sended so we can loop to 1 and to last.
 def beerInfo(request, pk):
     if request.method == "GET":
         theBeer = get_object_or_404(beerReview, pk=pk)
-        return render(request, "sites/beer.html", {"theBeer": theBeer})
+        nextBeer = theBeer.pk+1
+        if(theBeer.pk == 1):
+            prevBeer = 1
+        else:
+            prevBeer = theBeer.pk-1
+        return render(request, "sites/beer.html", {"theBeer": theBeer, "nextBeer": nextBeer, "prevBeer": prevBeer})
