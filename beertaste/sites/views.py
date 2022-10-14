@@ -20,16 +20,17 @@ def uploadBeer(request):
         form = UploadReview()
     return render(request, "sites/upload.html", {"form":form})
 
-# This is test that can I make form and use it without using form.model.
+# This is test that we can make prittier forms and found around forms limitations
 # TEST
 def testUploadBeer(request):
     if request.method == "POST":
         form = radioReview(request.POST, request.FILES)
         if form.is_valid:
             print(form)
-    else:
-        form = radioReview()
-    return render(request, "sites/upT.html", {"form":form})
+    if request.method == "GET":
+        pass
+        #all country, mold, adjectives
+    return render(request, "sites/upT.html", {"country":country, "mold":mold, "adjectives":adjectives})
 # TEST
 
 # url "<pk:int/>". Check if request has pk in it or does it need to be told
