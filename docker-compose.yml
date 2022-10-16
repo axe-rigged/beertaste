@@ -1,1 +1,40 @@
-# Make docker file for all.
+version: "3"
+
+services:
+  database:
+    image: mariadb
+    volumes:
+      - ./beertaste/data/db:/var/lib/mysql
+    restart: always
+    environment:
+      DATABAE_PASS: /run/secrets/maria_pass
+      DATABAE_USER: beer
+      DATABASE_NAME: drinkder
+
+  django:
+    build:
+      context: ./beertaste/
+    volumes:
+      - ./beertaste/:/usr/src/app
+    command: >
+      sh -c "python manage.py makemigrations &&
+      python manage.py migrate &&
+      uwsgi --ini container_uwsgi.ini"
+    ports:
+      - 8000:8000
+    environment:
+      DATABAE_PASS: /run/secrets/maria_pass
+      DATABAE_USER: beer
+      DATABASE_NAME: drinkder
+      DJANGO_SECRET: /run/secrets/django_secret_key
+    depends_on:
+      - database
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf/:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - django
