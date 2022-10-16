@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- Could be better looking form. Make input more wider and easier to use. -->
 <div class="w-4/5 mx-auto grid grid-cols-1">
 	<form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	<div class="bg-kel p-4 my-3 rounded-md mx-auto w-3/5 grid grid-cols-1">
+	<div class="bg-kel border-solid border-4 border-har p-4 my-3 rounded-md mx-auto w-3/5 grid grid-cols-1">
 
 		{% for field in form %}
-			<div class="text-black grid grid-cols-4 place-items-center">
+			<div class="text-black grid grid-cols-4 place-items-center my-1">
 				{{ field.errors }}
-				<div class="col-span-1">
+				<div class="col-span-2">
 				{{ field.label_tag }}
 				</div>
 				<div class="col-span-2">

@@ -18,16 +18,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-with(open("/etc/secretkey.txt") as x):
-    SECRET_KEY = x.read().strip()
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# SECURITY WARNING: keep the secret key used in production secret!
+if DEBUG:
+    with(open("/etc/secretkey.txt") as x):
+        SECRET_KEY = x.read().strip()
+else:
+    SECRET_KEY = os.environ.get('DJANGO_SECRET')
+
 # Host can be domain name or IP
 ALLOWED_HOSTS = ['127.0.0.1']
-
+# CORS maybe needed
 
 # Application definition
 
@@ -83,13 +86,24 @@ INTERNAL_IPS = ["127.0.0.1",]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Maybe create databases to /var/www/beer/media and /static for nginx
 # Make mariadb that can be used later with container or have ready to go option.
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('DATABASE_NAME'),
+            'USER': os.environ.get('DATABAE_USER'),
+            'PASSWORD': os.environ.get('DATABAE_PASS'),
+            'HOST': 'database',
+            'PORT': 5432
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -128,6 +142,7 @@ USE_TZ = True
 STATICFILES_DIRS = [
         BASE_DIR / "beertaste/static/",
         BASE_DIR / "sites/static/",
+        BASE_DIR / "theme/static/",
         ]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
