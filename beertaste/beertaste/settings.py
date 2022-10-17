@@ -29,7 +29,7 @@ else:
     SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
 # Host can be domain name or IP
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # CORS maybe needed
 
 # Application definition
@@ -78,9 +78,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'beertaste.wsgi.application'
 
+#Develpoment server for tailwind
 TAILWIND_APP_NAME = "theme"
-#Develpoment server
 INTERNAL_IPS = ["127.0.0.1",]
+#
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
