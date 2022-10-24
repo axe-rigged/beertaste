@@ -10,9 +10,9 @@ There is few things that need to be done before runnning docker.
 -	We need to create SECRET_KEY for django
 -	We need to create DATABAE_PASS for django and maria
 
-...
+```
 docker secret create name value
-...
+```
 
 Might be good idea use printf or echo.
 

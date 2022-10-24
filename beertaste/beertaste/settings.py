@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+# Should just add huge if DEBUG and then settings different
 
 from pathlib import Path
 import os
@@ -136,6 +137,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+# We need to have https for this to work
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

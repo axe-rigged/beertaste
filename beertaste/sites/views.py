@@ -22,15 +22,15 @@ def uploadBeer(request):
 
 # This is test that we can make prittier forms and found around forms limitations
 # TEST
-def testUploadBeer(request):
-    if request.method == "POST":
-        form = radioReview(request.POST, request.FILES)
-        if form.is_valid:
-            print(form)
-    if request.method == "GET":
-        pass
-        #all country, mold, adjectives
-    return render(request, "sites/upT.html", {"country":country, "mold":mold, "adjectives":adjectives})
+#def testUploadBeer(request):
+#    if request.method == "POST":
+#        form = radioReview(request.POST, request.FILES)
+#        if form.is_valid:
+#            print(form)
+#    if request.method == "GET":
+#        pass
+#        #all country, mold, adjectives
+#    return render(request, "sites/upT.html", {"country":country, "mold":mold, "adjectives":adjectives})
 # TEST
 
 # url "<pk:int/>". Check if request has pk in it or does it need to be told
