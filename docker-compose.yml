@@ -7,9 +7,9 @@ services:
       - ./beertaste/data/db:/var/lib/mysql
     restart: always
     environment:
-      DATABAE_PASS: /run/secrets/maria_pass
-      DATABAE_USER: beer
-      DATABASE_NAME: drinkder
+      MARIADB_ROOT_PASSWORD: beeeeeer
+      MARIADB_USER: beer
+      MARIADB_DATABASE: drinkder
 
   django:
     build:
@@ -22,13 +22,11 @@ services:
       python manage.py loaddata beerdata.json &&
       python manage.py collectstatic &&
       uwsgi --ini container_uwsgi.ini"
-    ports:
-      - 8000:8000
     environment:
-      DATABAE_PASS: /run/secrets/maria_pass
+      DATABAE_PASS: beeeeeer
       DATABAE_USER: beer
       DATABASE_NAME: drinkder
-      DJANGO_SECRET: /run/secrets/django_secret_key
+      DJANGO_SECRET: fuck docker
     depends_on:
       - database
 

@@ -4,6 +4,6 @@ WORKDIR /usr/src/app
 
 COPY required.txt ./
 
-RUN pip install -no-cahce-dir -r required.txt
+RUN pip install -r required.txt
 
 COPY . .
