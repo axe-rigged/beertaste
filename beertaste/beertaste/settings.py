@@ -82,7 +82,9 @@ WSGI_APPLICATION = 'beertaste.wsgi.application'
 #Develpoment server for tailwind
 TAILWIND_APP_NAME = "theme"
 INTERNAL_IPS = ["127.0.0.1",]
-#
+
+# Access from other origins
+# CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "http://127.0.0.1"]
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -144,6 +146,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 # /var/www/beer/media+/images, statics
+# You can change MEDIA_root directory somewhere else but make sure that nginx has rights to write there
 STATICFILES_DIRS = [
         BASE_DIR / "beertaste/static/",
         BASE_DIR / "sites/static/",
