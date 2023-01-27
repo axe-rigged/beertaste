@@ -100,8 +100,8 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': os.environ.get('DATABASE_NAME'),
-            'USER': os.environ.get('DATABAE_USER'),
-            'PASSWORD': os.environ.get('DATABAE_PASS'),
+            'USER': os.environ.get('DATABASE_USER'),
+            'PASSWORD': os.environ.get('DATABASE_PASS'),
             'HOST': "database",
             'PORT': 3306
         }

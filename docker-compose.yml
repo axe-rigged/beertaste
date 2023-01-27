@@ -3,21 +3,21 @@ version: "3"
 services:
   database:
     image: mariadb
-    user: 1000:1000
-    volumes:
-      - ./beertaste/data/db:/var/lib/mysql
+    # volumes:
+    #   - ./beertaste/data/db:/var/lib/mysql
     restart: always
     environment:
       MARIADB_ROOT_HOST: "%"
-      MARIADB_ROOT_PASSWORD: "beeeeeer"
-      MARIADB_USER: "beer"
-      MARIADB_DATABASE: "drinkder"
+      MARIADB_ROOT_PASSWORD: beeeeeer
+      MARIADB_PASSWORD: beeeeeer
+      MARIADB_USER: beer
+      MARIADB_DATABASE: drinkder
       MARIADB_PORT: 3306
     networks:
       beer:
         ipv4_address: 10.10.10.12
     expose:
-      - "3306"
+      - 3306
 
   django:
     build:
@@ -29,17 +29,17 @@ services:
       python3 manage.py migrate &&
       python3 manage.py loaddata beerdata.json &&
       python3 manage.py collectstatic &&
-      uwsgi --ini container_uwsgi.ini"
+      gunicorn beertaste.wsgi"
     environment:
-      DATABAE_PASS: "beeeeeer"
-      DATABAE_USER: "beer"
-      DATABASE_NAME: "drinkder"
-      DJANGO_SECRET: "jdfhasdf89asuf09sduaf9"
+      DATABASE_PASS: beeeeeer
+      DATABASE_USER: beer
+      DATABASE_NAME: drinkder
+      DJANGO_SECRET: jdfhasdf89asuf09sduaf9
     networks:
       beer:
         ipv4_address: 10.10.10.11
     expose:
-      - "8000"
+      - 8000
     depends_on:
       - database
 
