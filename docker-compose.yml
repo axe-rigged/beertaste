@@ -3,13 +3,21 @@ version: "3"
 services:
   database:
     image: mariadb
+    user: 1000:1000
     volumes:
       - ./beertaste/data/db:/var/lib/mysql
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: beeeeeer
-      MARIADB_USER: beer
-      MARIADB_DATABASE: drinkder
+      MARIADB_ROOT_HOST: "%"
+      MARIADB_ROOT_PASSWORD: "beeeeeer"
+      MARIADB_USER: "beer"
+      MARIADB_DATABASE: "drinkder"
+      MARIADB_PORT: 3306
+    networks:
+      beer:
+        ipv4_address: 10.10.10.12
+    expose:
+      - "3306"
 
   django:
     build:
@@ -17,24 +25,45 @@ services:
     volumes:
       - ./beertaste/:/usr/src/app
     command: >
-      sh -c "python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py loaddata beerdata.json &&
-      python manage.py collectstatic &&
+      sh -c "python3 manage.py makemigrations &&
+      python3 manage.py migrate &&
+      python3 manage.py loaddata beerdata.json &&
+      python3 manage.py collectstatic &&
       uwsgi --ini container_uwsgi.ini"
     environment:
-      DATABAE_PASS: beeeeeer
-      DATABAE_USER: beer
-      DATABASE_NAME: drinkder
-      DJANGO_SECRET: fuck docker
+      DATABAE_PASS: "beeeeeer"
+      DATABAE_USER: "beer"
+      DATABASE_NAME: "drinkder"
+      DJANGO_SECRET: "jdfhasdf89asuf09sduaf9"
+    networks:
+      beer:
+        ipv4_address: 10.10.10.11
+    expose:
+      - "8000"
     depends_on:
       - database
 
   nginx:
     image: nginx:alpine
+    command: >
+      sh -c "mkdir -p /var/www/media &&
+      mkdir -p /var/www/static"
+    networks:
+      beer:
+        ipv4_address: 10.10.10.10
     ports:
       - 80:80
     volumes:
-      - ./nginx.conf/:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./beertaste/static/:/var/www/static/
+      - ./beertaste/media/:/var/www/media/
     depends_on:
       - django
+      - database
+
+networks:
+  beer:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.10.10.0/24"

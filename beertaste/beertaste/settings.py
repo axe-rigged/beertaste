@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if DEBUG:
@@ -83,8 +83,6 @@ WSGI_APPLICATION = 'beertaste.wsgi.application'
 TAILWIND_APP_NAME = "theme"
 INTERNAL_IPS = ["127.0.0.1",]
 
-# Access from other origins
-# CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "http://127.0.0.1"]
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -104,8 +102,8 @@ else:
             'NAME': os.environ.get('DATABASE_NAME'),
             'USER': os.environ.get('DATABAE_USER'),
             'PASSWORD': os.environ.get('DATABAE_PASS'),
-            'HOST': 'database',
-            'PORT': 5432
+            'HOST': "database",
+            'PORT': 3306
         }
     }
 
@@ -139,6 +137,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Access from other origins
+# CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "http://127.0.0.1"]
 # We need to have https for this to work
 # CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_SECURE = True

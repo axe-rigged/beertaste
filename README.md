@@ -25,4 +25,6 @@ Might be good idea use printf or echo.
 You can find secrets to use environments in /run/secrets/
 We need to create "django_secret_key" and "maria_pass"
 
-There should be database that gives thinks like countrys, adjectives and molts to use for beer.
+## SHOULD KNOW THINKGS
+You need to install are bin and lib for building C-code and python librarys.
+You should know how services and rights have been divided by different apps/services.
