@@ -7,10 +7,9 @@ services:
     #   - ./beertaste/data/db:/var/lib/mysql
     restart: always
     environment:
-      MARIADB_ROOT_HOST: "%"
-      MARIADB_ROOT_PASSWORD: beeeeeer
+      # MARIADB_ROOT_PASSWORD: beeeeeer
       MARIADB_PASSWORD: beeeeeer
-      MARIADB_USER: beer
+      MARIADB_USER: root
       MARIADB_DATABASE: drinkder
       MARIADB_PORT: 3306
     networks:
@@ -28,11 +27,11 @@ services:
       sh -c "python3 manage.py makemigrations &&
       python3 manage.py migrate &&
       python3 manage.py loaddata beerdata.json &&
-      python3 manage.py collectstatic &&
+      python3 manage.py collectstatic --noinput &&
       gunicorn beertaste.wsgi"
     environment:
       DATABASE_PASS: beeeeeer
-      DATABASE_USER: beer
+      DATABASE_USER: root
       DATABASE_NAME: drinkder
       DJANGO_SECRET: jdfhasdf89asuf09sduaf9
     networks:
@@ -45,16 +44,16 @@ services:
 
   nginx:
     image: nginx:alpine
-    command: >
-      sh -c "mkdir -p /var/www/media &&
-      mkdir -p /var/www/static"
+    # command: >
+    #   sh -c "mkdir -p /var/www/media &&
+    #   mkdir -p /var/www/static"
     networks:
       beer:
         ipv4_address: 10.10.10.10
     ports:
       - 80:80
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf.d:ro
       - ./beertaste/static/:/var/www/static/
       - ./beertaste/media/:/var/www/media/
     depends_on:
